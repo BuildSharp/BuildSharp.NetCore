@@ -3,6 +3,20 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>BuildSharp</Title>
+    <Authors>.NET Uzbekistan Community</Authors>
+    <Description>Open-source tool for building architecture in .NET</Description>
+    <Copyright>Copyright 2022</Copyright>
+    <PackageProjectUrl>https://dot-net.uz</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIconUrl>icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/BuildSharp/BuildSharp.NetCore</RepositoryUrl>
+    <RepositoryType>public</RepositoryType>
+    <PackageTags>buildsharp; crud; generic repository; repository; dotnetuz; generic repository pattern</PackageTags>
+    <PackageReleaseNotes>Open-source tool for building architecture in .NET</PackageReleaseNotes>
+    <PackageId>BuildSharp</PackageId>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

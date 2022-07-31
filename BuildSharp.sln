@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildSharp.AspNetCore.WebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildSharp.Tools", "BuildSharp.Tools\BuildSharp.Tools.csproj", "{120A3526-B8BA-4F36-8551-1AB2A857F883}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{52DE254A-11E1-4BFD-8FF8-D58166E7A5D2}"
+	ProjectSection(SolutionItems) = preProject
+		BuildSharp.Tools\bin\Debug\net6.0\icon.png = BuildSharp.Tools\bin\Debug\net6.0\icon.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
