@@ -1,3 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace BuildSharp.NetCore;
 
-Console.WriteLine("Hello, World!");
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello World!");
+    }
+
+    // bs --repository/-r <name of repo>
+}
