@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{70DA203E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{689B2394-42DD-41CA-B8E6-D7909FA499D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildSharp.Tools", "BuildSharp.Tools\BuildSharp.Tools.csproj", "{ACF78CA6-ED13-4C0E-9FCB-A66CE74757B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildSharp.NetCore", "BuildSharp.NetCore\BuildSharp.NetCore.csproj", "{65DA8FC9-63D9-4622-8F6E-EFAAA1AAFB6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,6 @@ Global
 		SolutionGuid = {A103D006-E12A-413E-A327-0302B2017862}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{ACF78CA6-ED13-4C0E-9FCB-A66CE74757B2} = {A7F65652-3353-4C02-8235-3443190A5A49}
+		{65DA8FC9-63D9-4622-8F6E-EFAAA1AAFB6A} = {A7F65652-3353-4C02-8235-3443190A5A49}
 	EndGlobalSection
 EndGlobal
