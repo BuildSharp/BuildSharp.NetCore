@@ -17,7 +17,7 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         this.dbContext = dbContext;
         this.dbSet = this.dbContext.Set<TSource>();
     }
-    public IQueryable<TSource> Where(
+    public virtual IQueryable<TSource> Where(
         Expression<Func<TSource, bool>> predicate = null, 
         IList<string> includes = null,
         bool isTracking = false)
@@ -36,13 +36,15 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
             entities.AsNoTracking();
     }
 
-    public Task<TSource> FirstOrDefaultAsync(
+    public virtual Task<TSource> FirstOrDefaultAsync(
         Expression<Func<TSource, bool>> predicate = null, 
         IList<string> includes = null,
         bool isTracking = false) =>
-            this.Where(predicate, includes, isTracking).FirstOrDefaultAsync();
+            this.Where(predicate, includes, isTracking)
+                .FirstOrDefaultAsync();
 
-    public async Task<TSource> AddAsync(TSource entity)
+    public virtual async Task<TSource> AddAsync(
+        TSource entity)
     {
         var entry = await this.dbSet.AddAsync(entity);
         await this.dbContext.SaveChangesAsync();
@@ -50,13 +52,15 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         return entry.Entity;
     }
 
-    public async Task AddRangeAsync(IList<TSource> entities)
+    public virtual async Task AddRangeAsync(
+        IList<TSource> entities)
     {
         await this.dbSet.AddRangeAsync(entities);
         await this.dbContext.SaveChangesAsync();
     }
 
-    public async Task<TSource> UpdateAsync(TSource entity)
+    public virtual async Task<TSource> UpdateAsync(
+        TSource entity)
     {
         var entry = this.dbSet.Update(entity);
         await this.dbContext.SaveChangesAsync();
@@ -64,7 +68,8 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         return entry.Entity;
     }
 
-    public async Task<TSource> RemoveAsync(TSource entity)
+    public virtual async Task<TSource> RemoveAsync(
+        TSource entity)
     {
         var entry = this.dbSet.Remove(entity);
         await this.dbContext.SaveChangesAsync();
@@ -72,7 +77,8 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         return entry.Entity;
     }
 
-    public async Task RemoveRangeAsync(IList<TSource> entities)
+    public virtual async Task RemoveRangeAsync(
+        IList<TSource> entities)
     {
         this.dbSet.RemoveRange(entities);
         await this.dbContext.SaveChangesAsync();
