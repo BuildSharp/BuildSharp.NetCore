@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace BuildSharp.Tools.Services;
 
-public class Repository<TSource, TDbContext> : IRepository<TSource> 
+public abstract class Repository<TSource, TDbContext> : IRepository<TSource> 
     where TDbContext : DbContext, 
     new() where TSource : class
 {
