@@ -1,6 +1,5 @@
 ﻿using BuildSharp.Tools.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 
 namespace BuildSharp.Tools.Services;
@@ -11,12 +10,19 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
 {
     private readonly TDbContext dbContext;
     private readonly DbSet<TSource> dbSet;
-
     public Repository(TDbContext dbContext)
     {
         this.dbContext = dbContext;
         this.dbSet = this.dbContext.Set<TSource>();
     }
+    
+    /// <summary>
+    /// Get all rows using predicate
+    /// </summary>
+    /// <param name="predicate"></param>
+    /// <param name="includes"></param>
+    /// <param name="isTracking"></param>
+    /// <returns></returns>
     public virtual IQueryable<TSource> Where(
         Expression<Func<TSource, bool>> predicate = null, 
         IList<string> includes = null,
@@ -36,6 +42,13 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
             entities.AsNoTracking();
     }
 
+    /// <summary>
+    /// Get first element of collection with predicate
+    /// </summary>
+    /// <param name="predicate"></param>
+    /// <param name="includes"></param>
+    /// <param name="isTracking"></param>
+    /// <returns></returns>
     public virtual Task<TSource> FirstOrDefaultAsync(
         Expression<Func<TSource, bool>> predicate = null, 
         IList<string> includes = null,
@@ -43,6 +56,11 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
             this.Where(predicate, includes, isTracking)
                 .FirstOrDefaultAsync();
 
+    /// <summary>
+    /// Add element 
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
     public virtual async Task<TSource> AddAsync(
         TSource entity)
     {
@@ -52,6 +70,10 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         return entry.Entity;
     }
 
+    /// <summary>
+    /// Add elements
+    /// </summary>
+    /// <param name="entities"></param>
     public virtual async Task AddRangeAsync(
         IList<TSource> entities)
     {
@@ -59,6 +81,11 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         await this.dbContext.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Update element
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
     public virtual async Task<TSource> UpdateAsync(
         TSource entity)
     {
@@ -67,7 +94,12 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
 
         return entry.Entity;
     }
-
+    
+    /// <summary>
+    /// Remove element
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
     public virtual async Task<TSource> RemoveAsync(
         TSource entity)
     {
@@ -77,6 +109,10 @@ public class Repository<TSource, TDbContext> : IRepository<TSource>
         return entry.Entity;
     }
 
+    /// <summary>
+    /// Remove range of elements from collection
+    /// </summary>
+    /// <param name="entities"></param>
     public virtual async Task RemoveRangeAsync(
         IList<TSource> entities)
     {
