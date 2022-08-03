@@ -8,8 +8,8 @@ public abstract class Repository<TSource, TDbContext> : IRepository<TSource>
     where TDbContext : DbContext, 
     new() where TSource : class
 {
-    private readonly TDbContext dbContext;
-    private readonly DbSet<TSource> dbSet;
+    protected readonly TDbContext dbContext;
+    protected readonly DbSet<TSource> dbSet;
     public Repository(TDbContext dbContext)
     {
         this.dbContext = dbContext;
